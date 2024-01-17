@@ -1,0 +1,50 @@
+\documentclass[11pt,landscape,a4paper]{article}
+\usepackage[top=7mm,bottom=7mm,left=7mm,right=7mm]{geometry}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bbm}
+\usepackage[nosf]{kpfonts}
+\usepackage[t1]{sourcesanspro}
+\usepackage{multicol}
+\usepackage{wrapfig}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{microtype}
+\usepackage{pdfpages}
+\usepackage[shortlabels]{enumitem}
+
+\newif\iflong
+\longtrue % \longfalse for short version and \longtrue for long version
+\newcommand{\inLongVersion}[1]{\iflong #1\fi}
+
+\setlist{nosep}
+\setlist[itemize]{leftmargin=*}
+\setlist[enumerate]{leftmargin=*}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\No}{\mathcal{N}}
+\DeclareMathOperator{\cov}{\operatorname{Cov}}
+\DeclareMathOperator{\var}{\operatorname{Var}}
+\DeclareMathOperator{\argmin}{\operatorname{argmin}}
+\DeclareMathOperator{\argmax}{\operatorname{argmax}}
+\DeclareMathOperator{\sgn}{\operatorname{sgn}}
+\let\bar\overline
+
+\begin{document}
+\include{./def}
+\small
+\begin{multicols*}{4}
+    \input{chapters/adversarial.tex}
+    \input{chapters/certification.tex}
+    \input{chapters/certified_training.tex}
+    \input{chapters/smoothing.tex}
+    \input{chapters/federated.tex}
+    \input{chapters/privacy.tex}
+    \input{chapters/logic.tex}
+    \input{chapters/fairness.tex}
+\end{multicols*}
+\end{document}

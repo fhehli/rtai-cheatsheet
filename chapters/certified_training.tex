@@ -1,0 +1,27 @@
+\section{Certified Training}
+Goal: $\min_\theta\mathbb{E}_{(x,y) \sim D} \big[ \max\limits_{{x' \in B_\varepsilon(x)}} \mathcal{L}(\theta, {x'}, y) \big]$\\
+\subsection*{DiffAI / IBP}
+IBP (over)approximates inner max by propagating the box $B_\varepsilon(x)$ and computing the max loss over the output set. Can use any abstract transformer (Box, DeepPoly, etc.) to get bounds on logits.
+
+\subsection*{SABR}
+SABR uses the loss\\ $$\mathcal{L}_{\varepsilon,\tau}(x,y)=\max_{x'\in B_{\varepsilon-\tau}(x)} \max_{z\in B_\tau(x')}CE(f(z),y),$$
+i.e. it uses a box $B_\tau(x')$ of size $\tau \leq\varepsilon$ around an adversarial sample $x'$. The outer max is (under)approximated by PGD search and the max inside is (over)approximated using IBP.
+
+% \textbf{DiffAI}
+% $$\min_\theta \E_{x,y} \max_{z\in \gamma(NN^{\#}(S(x)))} \mathcal{L}(z, y;\theta)$$
+% where $S(x)$ is the allowed input set, $NN^{\#}$ is the abstraction of NN (e.g., DeepPoly abstraction).
+% \begin{itemize}
+%     \item Suppose we use $\mathcal{L}(z, y) = \max_{q\ne y}(z_q-z_y)$. Then for each iteration, we first compute the convex relaxation of the input, and then compute the interval bound for $z_q-z_y$. Then we use the upper bound as the loss and update according to the gradient (Note that it is still differentiable).
+%     \item Suppose we use the cross entropy loss. Then we first compute the interval bound for $z_i$ and pick the upper bound for incorrect classes and lower bound for correct classes to form a new vector. Then we use this new vector to compute the cross entropy and update.
+% \end{itemize}
+% Practical tricks: (1) Annealing: start with a small $S(x)$ and then grow it. (2) Dynamically switch between standard loss and the certified loss.
+
+% Convex Layerwise Adversarial Training (\textbf{COLT}) avoids increasing difficulty in the optimization due to better relaxations. The goal is to find a feasible point in the first-layer relaxation so that the loss is maximized and use this feasible point in the certified loss. When combined with Zonotope, it uses projection in the $\epsilon$ space since each $\epsilon \in [0,1]^n$ corresponds to a point in the zonotope. Although it is not the min-distance projection in the zonotope, it avoids the problem when the zonotope lies in a lower dimension where direct projection is not possible. It allows better results when a better relaxation is used.
+
+% To find inner max, use abstract loss $\mathcal{L}(\vec{z}, y)$, where $y = $ target label, $\vec{z} = $ vector of logits:
+% \begin{itemize}
+%     \item $\mathcal{L}(z, y) = \max_{q \neq y} (z_q - z_y)$: Compute {$d_c = z_c - z_y \forall c \in \mathcal{C}$} where $\mathcal{C}$ set of classes and $z_c$ the abstract logit shape of class $i$. Then compute box bounds of $d_c$ and compute max upper bound: {$\max_{c \in \mathcal{C}}(\max(box(d_c)))$}
+%     \item $\mathcal{L}(z,y) = CE(z,y)$: Compute box bounds $[l_c, u_c]$ of logit shapes $z_c$. $\forall c \in \mathcal{C}$ pick $u_c$ if $c \neq y$, pick $l_c$ if $c = y$. Then compute $CE(\operatorname{softmax}(v), y)$ where $v = [u_0, u_1,.., l_c,.., u_{|\mathcal{C}|}]$.
+% \end{itemize}
+% Cheap relaxations (e.g. Box) scale but introduce lots of infeasible points. Results in big drop in accuracy.
+% Empirically, more precise relaxations (Zonotope) do not actually bring better results in provabililty. Hypothesis: more complex abstractions lead to more difficult optimization problems.
