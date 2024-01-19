@@ -14,6 +14,7 @@
 \usepackage{microtype}
 \usepackage{pdfpages}
 \usepackage[shortlabels]{enumitem}
+\usepackage{lmodern}
 
 \newif\iflong
 \longtrue % \longfalse for short version and \longtrue for long version
@@ -27,6 +28,8 @@
 \newcommand{\E}{\mathbb{E}}
 \renewcommand{\P}{\mathbb{P}}
 \newcommand{\No}{\mathcal{N}}
+\newcommand{\Mo}{\mathcal{M}}
+\newcommand{\Do}{\mathcal{D}}
 \DeclareMathOperator{\cov}{\operatorname{Cov}}
 \DeclareMathOperator{\var}{\operatorname{Var}}
 \DeclareMathOperator{\argmin}{\operatorname{argmin}}
@@ -44,6 +47,7 @@
     \input{chapters/smoothing.tex}
     \input{chapters/federated.tex}
     \input{chapters/privacy.tex}
+    \input{chapters/synthetic_data.tex}
     \input{chapters/logic.tex}
     \input{chapters/fairness.tex}
 \end{multicols*}

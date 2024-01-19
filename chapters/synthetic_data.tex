@@ -1,0 +1,5 @@
+\section{Synthetic Data}
+\textbf{Goal}: Dataset with same statistical properties \& provable DP guarantees\\
+\textbf{Marginal}: \#Elements per attribute subset split by attribute domains($L_2$-sensitivity: 1)\\
+\textbf{Exponential Mechanism}: $\P\left[\Mo(\Do)=r\right] \propto exp(\epsilon\cdot q(\Do,r))$, $q$: quality score\\
+\textbf{ProgSyn}: 1. Sample random noise $z\sim\No(0,I_p)$. 2. pass $z$ through genrative model $\Theta(z)$. 3. Obtain synthetic dataset $g_{\Theta}(z)$. 4. Adapt params $\Theta$ $\rightarrow$ $g_{\Theta}(z)$ close to $X$. 5. Fine-tune params $\Theta$ $\rightarrow$ $g_{\Theta}(z)$ satisfy additional constrains
