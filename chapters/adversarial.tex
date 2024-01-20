@@ -3,8 +3,8 @@
 
 \textbf{Untargeted FGSM:} $x^\prime = x + \varepsilon \sgn(\nabla_x \mathcal{L}_y (x))$, where $y$ is the original label.
 
-\textbf{Carlini \& Wagner:}\\
-Solve $\argmin_\eta ||\eta||_p+\lambda \mathcal{L}_t(x+\eta)$ s.t. $x+\eta\in [0,1]^n$. $\mathcal{L}$ satisfies $\mathcal{L}_t(x+\eta)\le 0 \Rightarrow f(x+\eta)=t$.
+\textbf{Carlini-Wagner:}\\
+Solve $\argmin_\eta ||\eta||_p+\lambda \mathcal{L}_t(x+\eta)$ s.t. $x+\eta\in [0,1]^n$. $\mathcal{L}$ satisfies $\mathcal{L}_t(x+\eta)\le 0 \Rightarrow f(x+\eta)=t$. Optimized with LBFGS-B.
 
 \textbf{PGD:} Iterate FGSM, each time with a small step. Typically used for adversarial training.
 
