@@ -2,7 +2,7 @@
 \textbf{DEF:} A model $M$ is individually fair if for any similar $x,x'$ it produces similar outputs $M(x),M(x')$, e.g.
 \begin{itemize}
     \item Lipschitz continuity: $\mu(M(x),M(x'))\le L\phi(x,x')$.
-    \item Binary similarity: $\phi(x,x')\rightarrow M(x)=M(x')$.
+    \item Binary similarity: $\phi(x,x')\Rightarrow M(x)=M(x')$.
 \end{itemize}
 % Then use DL2 to translate the similarity constraint into loss functions.
 
@@ -24,12 +24,12 @@ Consider binary $\phi,\mu$. 1. Encoder $f_\theta$ is trained s.t. $\phi(x, x') \
 
 \section{Group Fairness}
 \textbf{Demographic Parity}\\
-$P(\hat Y\mid G=0)=P(\hat Y\mid G=1)$\\
+$\P\left[\hat Y\mid G=0\right]=\P\left[\hat Y\mid G=1\right]$\\
 \textbf{Equalized Odds}\\
-$P(\hat Y\mid G=0,Y=0)=P(\hat Y\mid G=1,Y=0)$\\
-$P(\hat Y\mid G=0,Y=1)=P(\hat Y\mid G=1,Y=1)$\\
+$\P\left[\hat Y\mid G=0,Y=0\right]=\P\left[\hat Y\mid G=1,Y=0\right]$\\
+$\P\left[\hat Y\mid G=0,Y=1\right]=\P\left[\hat Y\mid G=1,Y=1\right]$\\
 \textbf{Equal Opportunity}\\
-$P(\hat Y\mid G=0,Y=1)=P(\hat Y\mid G=1,Y=1)$
+$\P\left[\hat Y\mid G=0,Y=1\right]=\P\left[\hat Y\mid G=1,Y=1\right]$
 
 \textbf{Approaches:}
 \begin{itemize}
