@@ -11,7 +11,7 @@
 \subsection*{Differential Privacy}
 A randomized algorithm $M$ is $\epsilon, \delta$-DP if for all "neighbouring" \ datasets $D, D^\prime$ and all attacks (sets) $S$,
 $$\P\left[M(D)\in S\right] \le e^\epsilon \P\left[M(D^\prime)\in S\right]+\delta.$$
-\vspace*{-6mm}
+\vspace*{-4mm}
 \subsection*{DP Rules}
 Post-processing: If $M$ is $\epsilon,\delta$-DP, then $g\circ M$ is $\epsilon,\delta$-DP.\\
 Composition: If $M_1,M_2$ are $\varepsilon_1,\delta_1$-DP and $\varepsilon_2,\delta_2$-DP, then $M:=(M_1,M_2)$ is $(\varepsilon_1+\varepsilon_2,\delta_1+\delta_2)$-DP.\\
