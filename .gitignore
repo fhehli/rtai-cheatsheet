@@ -34,3 +34,4 @@
 *.ps
 *.fdb_latexmk
 *.synctex.gz(busy)
+*.synctex(busy)
