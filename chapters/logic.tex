@@ -26,6 +26,8 @@ For example, $\phi$ could be: $\|z-x\|_{\infty}<\epsilon \Rightarrow \|NN(z)-NN(
 \end{tabular}
 \vspace*{1mm}
 
+$\forall x: T(\phi)(x) = 0 \Leftrightarrow x\ \text{satisfies}\ \phi$.
+
 \subsection*{Training for Logical Properties}
 Idea: Get the worst violation of $\phi$ and find $\theta$ that minimizes its effect. I.e. solve {$\min_\theta\mathbb{E}_{s \sim D} \big[ T(\phi)(z^*, s, \theta) \big]$} where {$z^* \in \argmin_z T(\lnot \phi)(z, s, \theta)$}.
 
