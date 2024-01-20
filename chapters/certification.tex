@@ -1,8 +1,8 @@
 \section{Certification}
 Goal: given a neural network $N$, a constraint over input $\phi$ and a property over outputs $\psi$, prove that $i \vDash \phi \Rightarrow N(i) \vDash \psi$ or return a violation. We want sound, complete and scalable algorithms, i.e., to either scale sound and complete methods or to make sound but incomplete methods more complete.
 \begin{itemize}
-    \item If the property does not hold, the program always states the property does not hold.
-    \item If the property holds, the program always states the property holds.
+    \item Soundness: If the property does not hold, the program always states the property does not hold.
+    \item Completeness: If the property holds, the program always states the property holds.
 \end{itemize}
 
 \subsection*{Convex Relaxations}
