@@ -9,7 +9,7 @@ $\|.\|_{\infty}\rightarrow\sum_i \max(\eta_i-\tau,0)$: faster convergence due to
 
 \textbf{PGD:} Iterate FGSM, each time with a small step. Typically used for adversarial training.
 
-\textbf{Adversarial Accuracy:} Correct classification and no adversarial example.
+\textbf{Adv. Accuracy:} $\frac{\#\text{correct class and no adv example}}{\#\text{samples}}$
 
 \textbf{Defense:} $\min_\theta \E_{x,y} [\max_{x^\prime\in S(x)} \mathcal{L}(x^\prime, y; \theta)]$.
 
