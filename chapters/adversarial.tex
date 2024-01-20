@@ -1,10 +1,11 @@
 \section{Adversarial Attacks}
 \textbf{Targeted FGSM:} $x^\prime = x - \varepsilon \sgn(\nabla_x \mathcal{L}_t(x))$, where $t$ is the target label.
 
-\textbf{Untargeted FGSM:} $x^\prime = x + \varepsilon \sgn(\nabla_x \mathcal{L}_y (x))$, where $y$ is the original label.
+\textbf{Untargeted FGSM:} \\$x^\prime = x + \varepsilon \sgn(\nabla_x \mathcal{L}_y (x))$, where $y$ is the original label.
 
 \textbf{Carlini-Wagner:}\\
-Solve $\argmin_\eta ||\eta||_p+\lambda \mathcal{L}_t(x+\eta)$ s.t. $x+\eta\in [0,1]^n$. $\mathcal{L}$ satisfies $\mathcal{L}_t(x+\eta)\le 0 \Rightarrow f(x+\eta)=t$. Optimized with LBFGS-B.
+Solve $\argmin_\eta ||\eta||_p+\lambda \mathcal{L}_t(x+\eta)$ s.t. $x+\eta\in [0,1]^n$. $\mathcal{L}$ satisfies $\mathcal{L}_t(x+\eta)\le 0 \Rightarrow f(x+\eta)=t$. Optimized with LBFGS-B.\\
+$\|.\|_{\infty}\rightarrow\sum_i \max(\eta_i-\tau,0)$: faster convergence due to updating multiple coordinates
 
 \textbf{PGD:} Iterate FGSM, each time with a small step. Typically used for adversarial training.
 
