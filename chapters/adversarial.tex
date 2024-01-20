@@ -11,3 +11,10 @@ Solve $\argmin_\eta ||\eta||_p+\lambda \mathcal{L}_t(x+\eta)$ s.t. $x+\eta\in [0
 \textbf{Adversarial Accuracy:} Correct classification and no adversarial example.
 
 \textbf{Defense:} $\min_\theta \E_{x,y} [\max_{x^\prime\in S(x)} \mathcal{L}(x^\prime, y; \theta)]$.
+
+\textbf{Norms}:
+\begin{itemize}
+    \item[] $\|x\|_\infty\leq\|x\|_1\leq d\|x\|_\infty$
+    \item[] $\|x\|_\infty\leq\|x\|_2\leq\sqrt{d}\|x\|_\infty$
+    \item[] $\|x\|_2\leq\|x\|_1\leq\sqrt{d}\|x\|_2$
+\end{itemize}
