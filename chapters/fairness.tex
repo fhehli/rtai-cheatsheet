@@ -1,7 +1,7 @@
 \section{Individual Fairness}
 \textbf{DEF:} A model $M$ is individually fair if for any similar $x,x'$ it produces similar outputs $M(x),M(x')$, e.g.
 \begin{itemize}
-    \item Lipschitz continuity: $\mu(M(x),M(x'))\le L\phi(x,x')$.
+    \item Lipschitz cont.: $\mu(M(x),M(x'))\le L\phi(x,x')$.
     \item Binary similarity: $\phi(x,x')\Rightarrow M(x)=M(x')$.
 \end{itemize}
 % Then use DL2 to translate the similarity constraint into loss functions.
@@ -39,8 +39,9 @@ $\P\left[\hat Y\mid G=0,Y=1\right]=\P\left[\hat Y\mid G=1,Y=1\right]$
 \end{itemize}
 
 \subsection*{LAFTR}
-\includegraphics[width=1\columnwidth]{img/laftr.png}
-Jointly trains an encoder $f$, classifier $g$, and adversarial classifiers $h$ by solving\\
+\includegraphics[width=.8\columnwidth]{img/laftr.png}
+
+Jointly trains an encoder $f$, classifier $g$, and adversarial classifier $h$ by optimizing\\
 $\min_{f,g}\max_{h\in\mathcal{H}} \mathcal{L}_{\text{clf}}(f,g)-\lambda \mathcal{L}_{\text{adv}}(f,h)$.\\
 \textbf{Balanced Accuracy}\\
 $\operatorname{BA}(h)=\frac{1}{2}\E_{Z_0}\left[1-h(z)\right]+\frac{1}{2}\E_{Z_1}h(z)$\\

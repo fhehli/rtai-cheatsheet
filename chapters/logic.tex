@@ -1,8 +1,8 @@
 \section{Logical Properties}
 \subsection*{DL2}
-Idea: Translate properties $\phi$ into loss function $T$ and optimize.
-For example, $\phi$ could be: $\|z-x\|_{\infty}<\epsilon \Rightarrow \|NN(z)-NN(x)\|_{\infty}<\delta$.
-
+Idea: Translate logical property $\phi$ into loss function $T(\phi)$
+s.t. $T(\phi)(x) \geq 0$ and $T(\phi)(x) = 0 \Leftrightarrow x\ \text{satisfies}\ \phi$.
+% For example, $\phi$ could be: $\|z-x\|_{\infty}<\epsilon \Rightarrow \|NN(z)-NN(x)\|_{\infty}<\delta$.
 % Useful rules:
 % \begin{itemize}
 %     \item $x\Rightarrow y$ is equivalent to $\neg x \lor y$.
@@ -26,9 +26,7 @@ For example, $\phi$ could be: $\|z-x\|_{\infty}<\epsilon \Rightarrow \|NN(z)-NN(
 \end{tabular}
 \vspace*{1mm}
 
-$\forall x: T(\phi)(x) = 0 \Leftrightarrow x\ \text{satisfies}\ \phi$.
-
 \subsection*{Training for Logical Properties}
-Idea: Get the worst violation of $\phi$ and find $\theta$ that minimizes its effect. I.e. solve {$\min_\theta\mathbb{E}_{s \sim D} \big[ T(\phi)(z^*, s, \theta) \big]$} where {$z^* \in \argmin_z T(\lnot \phi)(z, s, \theta)$}.
+Idea: Get the worst violation of $\phi$ and find $\theta$ that minimizes its effect. I.e. optimize {$\min_\theta\mathbb{E}_{s \sim D} \big[ T(\phi)(z^*, s, \theta) \big]$} where {$z^* \in \argmin_z T(\lnot \phi)(z, s, \theta)$}.
 
 In practice, restrict $z$ to a convex set with efficient projections (closed form). One can then remove the constraint from $\phi$ that restricts $z$ on the convex set and do PGD while projecting $z$ onto the convex set.
